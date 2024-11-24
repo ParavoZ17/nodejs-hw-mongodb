@@ -1,4 +1,4 @@
-export function contacts (){return [
+ [
     {
       "name": "Yulia Shevchenko",
       "phoneNumber": "+380000000001",
@@ -89,4 +89,4 @@ export function contacts (){return [
       "createdAt": "2024-05-08T16:12:14.954208",
       "updatedAt": "2024-05-08T16:12:14.954211"
     }
-  ]}
+  ]
