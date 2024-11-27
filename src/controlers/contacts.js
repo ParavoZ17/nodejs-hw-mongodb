@@ -6,7 +6,6 @@ import {
   deleteContact,
 } from '../services/contacts.js';
 import createHttpError from 'http-errors';
-import mongoose from 'mongoose';
 
 export const getAllContactsController = async (req, res, next) => {
   const contacts = await getAllContacts();
@@ -33,12 +32,15 @@ export const getContactByIdController = async (req, res, next) => {
 
 export const addContactController = async (req, res) => {
   const data = await addContact(req.body);
+  console.log(data);
   res.status(201).json({
     status: 201,
-    message: 'Add succsesfully',
-    data,
+    message: 'Successfully created a contact!',
+    data: data,
   });
 };
+
+
 
 export const patchContactController = async (req, res, next) => {
   const { contactId } = req.params;
@@ -56,7 +58,7 @@ export const patchContactController = async (req, res, next) => {
 };
 
 export const deleteContactController = async (req, res, next) => {
-  const  {contactId} = req.params;
+  const { contactId } = req.params;
   const contact = await deleteContact(contactId);
 
   if (!contact) {
@@ -65,4 +67,3 @@ export const deleteContactController = async (req, res, next) => {
 
   res.status(204).send();
 };
-

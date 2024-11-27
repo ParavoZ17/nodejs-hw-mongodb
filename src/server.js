@@ -15,12 +15,12 @@ export function startServer() {
 
   app.use(cors());
   app.use(express.json())
-  
-  const logger = pino({
-    transport: {
-      target: 'pino-pretty',
-    },
-  });
+
+  // const logger = pino({
+  //   transport: {
+  //     target: 'pino-pretty',
+  //   },
+  // });
   // app.use(logger);
 
   app.use('/contacts', contactsRouter);
