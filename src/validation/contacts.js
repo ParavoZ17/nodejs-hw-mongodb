@@ -7,16 +7,15 @@ export const contactsAddSchema = Joi.object({
   email: Joi.string()
     .min(3)
     .max(20)
-    .required()
     .messages({ 'any.required': 'Вкажіть електронну пошту' }),
-  contactType: Joi.string().valid(...contactType),
+  contactType: Joi.string().valid(...contactType).required(),
   isFavourite: Joi.boolean(),
 });
 
 export const contactUpdateSchema = Joi.object({
   name: Joi.string().min(3).max(20),
   phoneNumber: Joi.string().min(13).max(14),
-  email: Joi.string().min(3).max(20),
+  email: Joi.string().min(3).max(20), 
   contactType: Joi.string().valid(...contactType),
   isFavourite: Joi.boolean(),
 });
