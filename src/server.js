@@ -3,25 +3,27 @@ import cors from 'cors';
 import pino from 'pino-http';
 import { env } from './utils/env.js';
 import contactsRouter from './routers/routers.js';
-import { notFoundHandler} from './middelewares/notFoundHandler.js';
+import { notFoundHandler } from './middelewares/notFoundHandler.js';
 import { errorHandler } from './middelewares/errorHandler.js';
-
+import authRouter from './routers/auth.js';
+import cookieParser from 'cookie-parser';
 
 const PORT = Number(env('PORT', '3000'));
 
 export function startServer() {
   const app = express();
-  
 
   app.use(cors());
-  app.use(express.json())
-
-  // const logger = pino({
-  //   transport: {
-  //     target: 'pino-pretty',
-  //   },
-  // });
+  app.use(express.json());
+  app.use(cookieParser());
+  const logger = pino({
+    transport: {
+      target: 'pino-pretty',
+    },
+  });
   // app.use(logger);
+
+  app.use('/auth', authRouter);
 
   app.use('/contacts', contactsRouter);
 
