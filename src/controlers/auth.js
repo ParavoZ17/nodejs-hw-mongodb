@@ -20,6 +20,7 @@ export const registerController = async (req, res) => {
   res.status(201).json({
     status: 201,
     message: 'Succsessfully registerd user!',
+    data,
   });
 };
 
