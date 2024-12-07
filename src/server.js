@@ -8,9 +8,10 @@ import { errorHandler } from './middelewares/errorHandler.js';
 import authRouter from './routers/auth.js';
 import cookieParser from 'cookie-parser';
 import { UPLOAD_DIR } from './constants/constants.js';
+import { swaggerDocs } from './middelewares/swaggerDocs.js';
 
 const PORT = Number(env('PORT', '3000'));
-
+  
 export function startServer() {
   const app = express();
 
@@ -29,6 +30,7 @@ export function startServer() {
 
   app.use('/contacts', contactsRouter);
   app.use('/uploads', express.static(UPLOAD_DIR));
+  app.use('/api-docs', swaggerDocs());
 
   app.use(notFoundHandler);
   app.use(errorHandler);
