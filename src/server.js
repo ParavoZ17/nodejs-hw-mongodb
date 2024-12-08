@@ -25,6 +25,11 @@ export function startServer() {
     },
   });
   // app.use(logger);
+//   app.get('/', (req, res) => {
+//     res.json({
+//         message: 'Welcome to my API! Navigate to /api-docs for documentation.',
+//     });
+// });
 
   app.use('/auth', authRouter);
 
